@@ -3,8 +3,9 @@ import { ProcessedDocumentModel, ProcessedDocumentDoc } from '../models/Document
 import { OCRService } from '../services/ocr.service';
 import { AIService } from '../services/ai.service';
 import { WorkflowEngine } from '../services/workflow-engine.service';
+import { GridFSService } from '../services/gridfs.service';
+import { v4 as uuidv4 } from 'uuid';
 import path from 'path';
-import fs from 'fs/promises';
 
 interface AuthenticatedRequest extends Request {
   user?: { userId: string };
@@ -14,6 +15,7 @@ export class DocumentController {
   private ocrService = new OCRService();
   private aiService = new AIService();
   private workflowEngine = new WorkflowEngine();
+  private gridfsService = new GridFSService();
 
   async uploadDocument(req: AuthenticatedRequest, res: Response): Promise<void> {
     try {
@@ -27,22 +29,38 @@ export class DocumentController {
         req.user = { userId: 'demo-user' };
       }
 
-      const { originalname, filename, mimetype, size, path: filePath } = req.file;
+      const { originalname, buffer, mimetype, size } = req.file;
+      
+      // Generate unique filename
+      const filename = `${uuidv4()}-${Date.now()}${path.extname(originalname)}`;
 
-      // Create document record
+      // Store file in GridFS
+      const fileId = await this.gridfsService.storeFile(
+        buffer,
+        filename,
+        {
+          originalName: originalname,
+          mimeType: mimetype,
+          userId: req.user.userId,
+          uploadDate: new Date()
+        }
+      );
+
+      // Create document record with GridFS file ID
       const document = new ProcessedDocumentModel({
         filename,
         originalName: originalname,
         mimeType: mimetype,
         size,
         userId: req.user.userId,
-        status: 'uploaded'
+        status: 'uploaded',
+        fileId: fileId
       });
 
       await document.save();
 
       // Start processing in background
-      this.processDocumentAsync(document._id!.toString(), filePath, mimetype);
+      this.processDocumentAsync(document._id!.toString(), buffer, mimetype);
 
       const docData = document as ProcessedDocumentDoc;
       
@@ -147,12 +165,11 @@ export class DocumentController {
 
       const docData = document as ProcessedDocumentDoc;
       
-      // Delete file from filesystem
+      // Delete file from GridFS
       try {
-        const filePath = path.join(process.env.UPLOAD_DIR || 'uploads', docData.filename);
-        await fs.unlink(filePath);
+        await this.gridfsService.deleteFile(docData.fileId);
       } catch (fileError) {
-        console.warn('Could not delete file from filesystem:', fileError);
+        console.warn('Could not delete file from GridFS:', fileError);
       }
 
       await ProcessedDocumentModel.deleteOne({ _id: req.params.id });
@@ -190,9 +207,9 @@ export class DocumentController {
       docData.error = undefined;
       await document.save();
 
-      // Reprocess document
-      const filePath = path.join(process.env.UPLOAD_DIR || 'uploads', docData.filename);
-      this.processDocumentAsync(document._id!.toString(), filePath, docData.mimeType);
+      // Reprocess document - get file from GridFS
+      const fileBuffer = await this.gridfsService.getFile(docData.fileId);
+      this.processDocumentAsync(document._id!.toString(), fileBuffer, docData.mimeType);
 
       res.json({ message: 'Document reprocessing started' });
 
@@ -202,7 +219,7 @@ export class DocumentController {
     }
   }
 
-  private async processDocumentAsync(documentId: string, filePath: string, mimeType: string): Promise<void> {
+  private async processDocumentAsync(documentId: string, fileBuffer: Buffer, mimeType: string): Promise<void> {
     try {
       // Update status to processing
       await ProcessedDocumentModel.findByIdAndUpdate(documentId, {
@@ -210,8 +227,8 @@ export class DocumentController {
         processedDate: new Date()
       });
 
-      // Extract text from document
-      const extractedText = await this.ocrService.extractTextFromFile(filePath, mimeType);
+      // Extract text from document buffer
+      const extractedText = await this.ocrService.extractTextFromBuffer(fileBuffer, mimeType);
 
       // Classify document type
       const documentType = await this.aiService.classifyDocument(extractedText);

@@ -5,8 +5,14 @@ export class AIService {
   private anthropic: Anthropic;
 
   constructor() {
+    const apiKey = process.env.ANTHROPIC_API_KEY || '';
+    
+    if (!apiKey) {
+      throw new Error('ANTHROPIC_API_KEY is required but not found in environment variables');
+    }
+    
     this.anthropic = new Anthropic({
-      apiKey: process.env.ANTHROPIC_API_KEY || '',
+      apiKey: apiKey,
     });
   }
 

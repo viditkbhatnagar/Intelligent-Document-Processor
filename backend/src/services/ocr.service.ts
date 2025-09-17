@@ -5,6 +5,28 @@ import fs from 'fs/promises';
 import path from 'path';
 
 export class OCRService {
+  async extractTextFromBuffer(buffer: Buffer, mimeType: string): Promise<string> {
+    // Create a temporary file path for libraries that need file paths
+    const tempFilePath = `/tmp/temp_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+    
+    try {
+      // Write buffer to temporary file
+      await fs.writeFile(tempFilePath, buffer);
+      
+      // Extract text using the existing method
+      const text = await this.extractTextFromFile(tempFilePath, mimeType);
+      
+      // Clean up temporary file
+      await fs.unlink(tempFilePath).catch(() => {}); // Ignore cleanup errors
+      
+      return text;
+    } catch (error) {
+      // Ensure cleanup even if extraction fails
+      await fs.unlink(tempFilePath).catch(() => {});
+      throw error;
+    }
+  }
+
   async extractTextFromFile(filePath: string, mimeType: string): Promise<string> {
     try {
       switch (mimeType) {

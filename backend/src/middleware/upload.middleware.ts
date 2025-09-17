@@ -1,27 +1,10 @@
 import multer from 'multer';
-import path from 'path';
-import fs from 'fs';
-import { v4 as uuidv4 } from 'uuid';
 import { OCRService } from '../services/ocr.service';
 
 const ocrService = new OCRService();
 
-// Ensure upload directory exists
-const uploadDir = process.env.UPLOAD_DIR || 'uploads';
-if (!fs.existsSync(uploadDir)) {
-  fs.mkdirSync(uploadDir, { recursive: true });
-}
-
-// Configure multer storage
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, uploadDir);
-  },
-  filename: (req, file, cb) => {
-    const uniqueName = `${uuidv4()}-${Date.now()}${path.extname(file.originalname)}`;
-    cb(null, uniqueName);
-  }
-});
+// Configure multer storage for memory storage (no local files)
+const storage = multer.memoryStorage();
 
 // File filter to validate file types
 const fileFilter = (req: any, file: Express.Multer.File, cb: multer.FileFilterCallback) => {

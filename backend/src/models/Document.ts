@@ -31,6 +31,8 @@ export interface ProcessedDocumentDoc extends Document {
   rawText?: string;
   userId: string;
   error?: string;
+  // GridFS file storage
+  fileId: mongoose.Types.ObjectId; // GridFS file ID
   // Workflow related fields
   transactionId?: string;
   relatedDocuments?: string[];
@@ -58,6 +60,8 @@ const ProcessedDocumentSchema = new Schema<ProcessedDocumentDoc>({
   rawText: { type: String },
   userId: { type: String, required: true },
   error: { type: String },
+  // GridFS file storage
+  fileId: { type: mongoose.Schema.Types.ObjectId, required: true },
   // Workflow related fields
   transactionId: { type: String },
   relatedDocuments: [{ type: String }],

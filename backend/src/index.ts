@@ -1,6 +1,12 @@
+// CRITICAL: Load environment variables FIRST, before any imports
+import dotenv from 'dotenv';
+const path = require('path');
+const envPath = path.resolve(__dirname, '../../.env');
+dotenv.config({ path: envPath });
+
+// Now import everything else AFTER environment variables are loaded
 import express from 'express';
 import cors from 'cors';
-import dotenv from 'dotenv';
 import { connectDatabase, disconnectDatabase } from './database/connection';
 import { seedTemplates } from './database/template-seeder';
 import documentRoutes from './routes/document.routes';
@@ -11,8 +17,6 @@ import workflowRoutes from './routes/workflow.routes';
 import workflowActionsRoutes from './routes/workflow-actions.routes';
 import { errorHandler } from './middleware/error.middleware';
 
-// Load environment variables from root directory
-dotenv.config({ path: '../.env' });
 
 const app = express();
 const PORT = process.env.PORT || 3001;
