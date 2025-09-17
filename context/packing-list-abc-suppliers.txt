@@ -1,0 +1,88 @@
+PACKING LIST
+
+From: ABC Suppliers Ltd
+Address: 123 Industrial Drive, Manufacturing City, State 12345
+Phone: +1-555-0123
+Email: shipping@abcsuppliers.com
+
+To: XYZ Trading Company Ltd
+Consignee: Global Retail Corp
+Delivery Address: 789 Warehouse District, Distribution Hub, State 54321
+
+Packing List Date: February 18, 2024
+Packing List #: PL-ABC-2024-001
+Commercial Invoice Ref: CI-ABC-2024-001
+Purchase Order Ref: PO-XYZ-2024-001
+Bill of Lading: BL-ABC-2024-001
+
+SHIPMENT DETAILS:
+
+Package 1-5: Premium Steel Rods (Grade A)
+Contents: 100 units per box × 5 boxes = 500 units total
+Dimensions per box: 120cm × 30cm × 25cm
+Weight per box: 180 kg
+Total weight: 900 kg
+Markings: "STEEL RODS - HANDLE WITH CARE"
+
+Package 6-10: Industrial Bearings (Heavy Duty)
+Contents: 40 units per box × 5 boxes = 200 units total
+Dimensions per box: 60cm × 40cm × 30cm
+Weight per box: 95 kg
+Total weight: 475 kg
+Markings: "PRECISION BEARINGS - FRAGILE"
+
+Package 11-15: Metal Fabrication Tools
+Contents: 10 units per box × 5 boxes = 50 units total
+Dimensions per box: 80cm × 50cm × 35cm
+Weight per box: 155 kg
+Total weight: 775 kg
+Markings: "TOOLS - HEAVY LIFTING REQUIRED"
+
+SUMMARY:
+Total Packages: 15 boxes
+Total Gross Weight: 2,450 kg (including packaging)
+Total Net Weight: 2,200 kg
+Total Volume: 8.2 cubic meters
+
+PACKAGING MATERIALS:
+- Wooden crates for steel rods
+- Foam-lined boxes for bearings
+- Heavy-duty cardboard boxes for tools
+- All packages sealed with tamper-evident tape
+- Moisture protection applied
+
+HANDLING INSTRUCTIONS:
+1. Use forklift for packages 1-5 and 11-15 (heavy items)
+2. Handle packages 6-10 with care (precision instruments)
+3. Store in dry location away from moisture
+4. Check for damage before unloading
+5. Verify item count against this packing list
+
+DELIVERY SCHEDULE:
+- Departure: February 18, 2024, 8:00 AM
+- Expected Arrival: February 20, 2024, 2:00 PM
+- Driver Contact: Mike Johnson (+1-555-9999)
+- Vehicle: TR-ABC-789
+
+SPECIAL NOTES:
+- All items have been quality inspected
+- Certificates included in document pouch
+- Balance payment required before unloading
+- Buyer to arrange labor for unloading
+
+PACKED BY:
+Warehouse Supervisor: Robert Wilson
+Date: February 18, 2024
+Time: 6:30 AM
+
+INSPECTED BY:
+Quality Control: Lisa Chen
+Signature: LC/QC-2024-001
+
+For shipping inquiries contact:
+Logistics Department
+Phone: +1-555-0123 ext. 501
+Email: logistics@abcsuppliers.com
+
+ABC Suppliers Ltd
+Shipping Department

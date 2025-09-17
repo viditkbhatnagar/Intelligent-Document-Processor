@@ -1,0 +1,88 @@
+COMMERCIAL INVOICE
+
+From: ABC Suppliers Ltd (Seller)
+Address: 123 Industrial Drive, Manufacturing City, State 12345
+Phone: +1-555-0123
+Email: sales@abcsuppliers.com
+Tax ID: ABC-TAX-123456
+
+To: XYZ Trading Company Ltd (Buyer)
+Address: 456 Business Plaza, Trade Center, State 67890
+Phone: +1-555-0456
+Email: procurement@xyztrading.com
+
+Consignee: Global Retail Corp
+Address: 789 Warehouse District, Distribution Hub, State 54321
+Phone: +1-555-0789
+
+Invoice Date: February 18, 2024
+Commercial Invoice #: CI-ABC-2024-001
+Proforma Invoice Ref: PI-ABC-2024-001
+Purchase Order Ref: PO-XYZ-2024-001
+Shipment Date: February 18, 2024
+
+GOODS SHIPPED:
+
+1. Premium Steel Rods (Grade A)
+   Quantity Shipped: 500 units
+   Unit Price: $45.00
+   Total Value: $22,500.00
+   HS Code: 7214.20.00
+
+2. Industrial Bearings (Heavy Duty)
+   Quantity Shipped: 200 units
+   Unit Price: $125.00
+   Total Value: $25,000.00
+   HS Code: 8482.10.50
+
+3. Metal Fabrication Tools
+   Quantity Shipped: 50 units
+   Unit Price: $350.00
+   Total Value: $17,500.00
+   HS Code: 8207.13.00
+
+SUBTOTAL: $65,000.00
+TAX (8%): $5,200.00
+TOTAL INVOICE VALUE: $70,200.00
+
+PAYMENT STATUS:
+- Advance Payment Received: $35,100.00 (Jan 22, 2024)
+- Balance Due on Delivery: $35,100.00
+
+SHIPPING DETAILS:
+- Shipment Method: Road Transport
+- Vehicle Number: TR-ABC-789
+- Driver: Mike Johnson (+1-555-9999)
+- Estimated Delivery: February 20, 2024
+- Bill of Lading: BL-ABC-2024-001
+
+PACKAGING:
+- Total Packages: 15 boxes
+- Gross Weight: 2,450 kg
+- Net Weight: 2,200 kg
+- Dimensions: Various (See packing list)
+
+CERTIFICATIONS:
+- Quality Certificate: QC-ABC-2024-001
+- Material Test Certificate: MTC-ABC-2024-001
+- Origin Certificate: COO-USA-2024-001
+
+PAYMENT INSTRUCTIONS:
+Balance payment of $35,100.00 is due upon delivery and inspection of goods.
+Payment Method: Bank Transfer or Cash on Delivery
+
+DELIVERY TERMS:
+- Terms: FOB Factory
+- Risk Transfer: Upon loading at our facility
+- Insurance: Covered by buyer as per agreement
+
+AUTHORIZED BY:
+ABC Suppliers Ltd
+John Smith, Sales Manager
+Digital Signature Applied
+
+This is a computer generated invoice and requires no signature.
+
+For any queries, contact:
+Customer Service: +1-555-0123 ext. 401
+Email: support@abcsuppliers.com

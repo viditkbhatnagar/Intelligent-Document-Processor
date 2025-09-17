@@ -1,0 +1,57 @@
+QUOTATION
+
+From: ABC Suppliers Ltd
+Address: 123 Industrial Drive, Manufacturing City, State 12345
+Phone: +1-555-0123
+Email: sales@abcsuppliers.com
+
+To: XYZ Trading Company Ltd
+Address: 456 Business Plaza, Trade Center, State 67890
+Phone: +1-555-0456
+Email: procurement@xyztrading.com
+
+Date: January 15, 2024
+Quotation #: QUO-2024-001
+Valid Until: February 15, 2024
+
+ITEMS QUOTED:
+
+1. Premium Steel Rods (Grade A)
+   Quantity: 500 units
+   Unit Price: $45.00
+   Total: $22,500.00
+
+2. Industrial Bearings (Heavy Duty)
+   Quantity: 200 units  
+   Unit Price: $125.00
+   Total: $25,000.00
+
+3. Metal Fabrication Tools
+   Quantity: 50 units
+   Unit Price: $350.00
+   Total: $17,500.00
+
+SUBTOTAL: $65,000.00
+TAX (8%): $5,200.00
+TOTAL AMOUNT: $70,200.00
+
+PAYMENT TERMS:
+- 50% advance payment upon order confirmation
+- 50% balance payment upon delivery
+- Payment Method: Bank Transfer
+
+DELIVERY TERMS:
+- Delivery Time: 30 days from order confirmation
+- Delivery Location: As per purchase order
+- Shipping: FOB Factory
+
+VALIDITY:
+This quotation is valid for 30 days from the date of issue.
+
+For any questions, please contact:
+John Smith, Sales Manager
+Email: john.smith@abcsuppliers.com
+Phone: +1-555-0123 ext. 101
+
+ABC Suppliers Ltd
+Authorized Signatory

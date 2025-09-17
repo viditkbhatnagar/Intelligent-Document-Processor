@@ -1,0 +1,76 @@
+PROFORMA INVOICE
+
+From: ABC Suppliers Ltd
+Address: 123 Industrial Drive, Manufacturing City, State 12345
+Phone: +1-555-0123
+Email: sales@abcsuppliers.com
+Tax ID: ABC-TAX-123456
+
+To: XYZ Trading Company Ltd (Buyer)
+Address: 456 Business Plaza, Trade Center, State 67890
+Phone: +1-555-0456
+Email: procurement@xyztrading.com
+
+Consignee: Global Retail Corp
+Address: 789 Warehouse District, Distribution Hub, State 54321
+
+Date: January 19, 2024
+Proforma Invoice #: PI-ABC-2024-001
+Your PO Reference: PO-XYZ-2024-001
+Validity: 15 days
+
+ITEMS:
+
+1. Premium Steel Rods (Grade A)
+   Quantity: 500 units
+   Unit Price: $45.00
+   Amount: $22,500.00
+
+2. Industrial Bearings (Heavy Duty)
+   Quantity: 200 units
+   Unit Price: $125.00
+   Amount: $25,000.00
+
+3. Metal Fabrication Tools
+   Quantity: 50 units
+   Unit Price: $350.00
+   Amount: $17,500.00
+
+SUBTOTAL: $65,000.00
+TAX (8%): $5,200.00
+TOTAL INVOICE AMOUNT: $70,200.00
+
+PAYMENT TERMS:
+- Advance Payment Required: $35,100.00 (50%)
+- Balance on Delivery: $35,100.00 (50%)
+
+BANK DETAILS FOR ADVANCE PAYMENT:
+Bank Name: First National Bank
+Account Name: ABC Suppliers Ltd
+Account Number: 123-456-7890
+Routing Number: 987654321
+SWIFT Code: FNBUSA33
+
+DELIVERY SCHEDULE:
+- Production Time: 25 days from advance payment receipt
+- Estimated Delivery: February 20, 2024
+- Shipping Method: Truck Transport
+- Delivery Location: As per consignee address
+
+TERMS & CONDITIONS:
+1. This proforma invoice is valid for 15 days
+2. Production will commence upon receipt of advance payment
+3. Balance payment due before shipment
+4. All prices include packaging and loading charges
+5. Delivery time may vary by ±5 days due to production schedule
+
+CONTACT FOR PAYMENT:
+Finance Department
+Email: finance@abcsuppliers.com
+Phone: +1-555-0123 ext. 301
+
+Please confirm advance payment date to schedule production.
+
+ABC Suppliers Ltd
+John Smith, Sales Manager
+Authorized Signatory
