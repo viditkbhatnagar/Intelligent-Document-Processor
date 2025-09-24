@@ -13,6 +13,7 @@ export interface ProcessedDocumentDoc extends Document {
     rawText?: string;
     userId: string;
     error?: string;
+    fileId: mongoose.Types.ObjectId;
     transactionId?: string;
     relatedDocuments?: string[];
     entities?: any;

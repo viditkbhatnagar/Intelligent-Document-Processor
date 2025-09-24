@@ -7,8 +7,12 @@ exports.AIService = void 0;
 const sdk_1 = __importDefault(require("@anthropic-ai/sdk"));
 class AIService {
     constructor() {
+        const apiKey = process.env.ANTHROPIC_API_KEY || '';
+        if (!apiKey) {
+            throw new Error('ANTHROPIC_API_KEY is required but not found in environment variables');
+        }
         this.anthropic = new sdk_1.default({
-            apiKey: process.env.ANTHROPIC_API_KEY || '',
+            apiKey: apiKey,
         });
     }
     async extractDocumentFields(text, documentType) {

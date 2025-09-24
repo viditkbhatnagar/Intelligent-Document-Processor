@@ -1,4 +1,5 @@
 export declare class OCRService {
+    extractTextFromBuffer(buffer: Buffer, mimeType: string): Promise<string>;
     extractTextFromFile(filePath: string, mimeType: string): Promise<string>;
     private extractTextFromPDF;
     private extractTextFromWord;

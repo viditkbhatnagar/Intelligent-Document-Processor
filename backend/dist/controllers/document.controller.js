@@ -8,13 +8,15 @@ const Document_1 = require("../models/Document");
 const ocr_service_1 = require("../services/ocr.service");
 const ai_service_1 = require("../services/ai.service");
 const workflow_engine_service_1 = require("../services/workflow-engine.service");
+const gridfs_service_1 = require("../services/gridfs.service");
+const uuid_1 = require("uuid");
 const path_1 = __importDefault(require("path"));
-const promises_1 = __importDefault(require("fs/promises"));
 class DocumentController {
     constructor() {
         this.ocrService = new ocr_service_1.OCRService();
         this.aiService = new ai_service_1.AIService();
         this.workflowEngine = new workflow_engine_service_1.WorkflowEngine();
+        this.gridfsService = new gridfs_service_1.GridFSService();
     }
     async uploadDocument(req, res) {
         try {
@@ -26,19 +28,29 @@ class DocumentController {
             if (!req.user) {
                 req.user = { userId: 'demo-user' };
             }
-            const { originalname, filename, mimetype, size, path: filePath } = req.file;
-            // Create document record
+            const { originalname, buffer, mimetype, size } = req.file;
+            // Generate unique filename
+            const filename = `${(0, uuid_1.v4)()}-${Date.now()}${path_1.default.extname(originalname)}`;
+            // Store file in GridFS
+            const fileId = await this.gridfsService.storeFile(buffer, filename, {
+                originalName: originalname,
+                mimeType: mimetype,
+                userId: req.user.userId,
+                uploadDate: new Date()
+            });
+            // Create document record with GridFS file ID
             const document = new Document_1.ProcessedDocumentModel({
                 filename,
                 originalName: originalname,
                 mimeType: mimetype,
                 size,
                 userId: req.user.userId,
-                status: 'uploaded'
+                status: 'uploaded',
+                fileId: fileId
             });
             await document.save();
             // Start processing in background
-            this.processDocumentAsync(document._id.toString(), filePath, mimetype);
+            this.processDocumentAsync(document._id.toString(), buffer, mimetype);
             const docData = document;
             res.status(201).json({
                 message: 'Document uploaded successfully',
@@ -128,13 +140,12 @@ class DocumentController {
                 return;
             }
             const docData = document;
-            // Delete file from filesystem
+            // Delete file from GridFS
             try {
-                const filePath = path_1.default.join(process.env.UPLOAD_DIR || 'uploads', docData.filename);
-                await promises_1.default.unlink(filePath);
+                await this.gridfsService.deleteFile(docData.fileId);
             }
             catch (fileError) {
-                console.warn('Could not delete file from filesystem:', fileError);
+                console.warn('Could not delete file from GridFS:', fileError);
             }
             await Document_1.ProcessedDocumentModel.deleteOne({ _id: req.params.id });
             res.json({ message: 'Document deleted successfully' });
@@ -164,9 +175,9 @@ class DocumentController {
             docData.extractedFields = [];
             docData.error = undefined;
             await document.save();
-            // Reprocess document
-            const filePath = path_1.default.join(process.env.UPLOAD_DIR || 'uploads', docData.filename);
-            this.processDocumentAsync(document._id.toString(), filePath, docData.mimeType);
+            // Reprocess document - get file from GridFS
+            const fileBuffer = await this.gridfsService.getFile(docData.fileId);
+            this.processDocumentAsync(document._id.toString(), fileBuffer, docData.mimeType);
             res.json({ message: 'Document reprocessing started' });
         }
         catch (error) {
@@ -174,15 +185,15 @@ class DocumentController {
             res.status(500).json({ message: 'Failed to reprocess document' });
         }
     }
-    async processDocumentAsync(documentId, filePath, mimeType) {
+    async processDocumentAsync(documentId, fileBuffer, mimeType) {
         try {
             // Update status to processing
             await Document_1.ProcessedDocumentModel.findByIdAndUpdate(documentId, {
                 status: 'processing',
                 processedDate: new Date()
             });
-            // Extract text from document
-            const extractedText = await this.ocrService.extractTextFromFile(filePath, mimeType);
+            // Extract text from document buffer
+            const extractedText = await this.ocrService.extractTextFromBuffer(fileBuffer, mimeType);
             // Classify document type
             const documentType = await this.aiService.classifyDocument(extractedText);
             // Extract fields using AI

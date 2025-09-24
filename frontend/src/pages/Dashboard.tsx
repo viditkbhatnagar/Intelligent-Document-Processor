@@ -14,16 +14,22 @@ const Dashboard = () => {
         
         <div className="space-x-4">
           <Link 
-            to="/upload"
+            to="/quotation-upload"
             className="inline-flex items-center bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-8 rounded-lg text-lg"
           >
-            Upload Documents
+            📄 Upload New Quotation
           </Link>
           <Link 
-            to="/workflow"
+            to="/workflow-transactions"
             className="inline-flex items-center bg-green-600 hover:bg-green-700 text-white font-bold py-4 px-8 rounded-lg text-lg"
           >
-            View Workflow Dashboard
+            📊 View Transactions
+          </Link>
+          <Link 
+            to="/reports"
+            className="inline-flex items-center bg-purple-600 hover:bg-purple-700 text-white font-bold py-4 px-8 rounded-lg text-lg"
+          >
+            📋 View Reports
           </Link>
         </div>
       </div>

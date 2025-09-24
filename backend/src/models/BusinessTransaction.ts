@@ -63,10 +63,21 @@ export interface BusinessTransactionDoc extends Document {
   documents: TransactionDocument[];
   paymentTerms?: PaymentTerms;
   totalAmount?: number;
+  totalAmountAED?: number;
   currency?: string;
   createdDate: Date;
   updatedDate: Date;
   nextSuggestedActions?: WorkflowSuggestion[];
+  // New workflow fields
+  orderReferenceNumber?: string;
+  companyId?: mongoose.Types.ObjectId;
+  customerId?: mongoose.Types.ObjectId;
+  supplierId?: mongoose.Types.ObjectId;
+  shipmentMethod?: 'sea' | 'air' | 'road';
+  shippingTerms?: string;
+  portName?: string;
+  buyerOrderReference?: string;
+  exchangeRate?: number;
 }
 
 const BusinessTransactionSchema = new Schema<BusinessTransactionDoc>({
@@ -107,10 +118,24 @@ const BusinessTransactionSchema = new Schema<BusinessTransactionDoc>({
   documents: [TransactionDocumentSchema],
   paymentTerms: PaymentTermsSchema,
   totalAmount: { type: Number },
+  totalAmountAED: { type: Number },
   currency: { type: String, default: 'USD' },
   createdDate: { type: Date, default: Date.now },
   updatedDate: { type: Date, default: Date.now },
-  nextSuggestedActions: [WorkflowSuggestionSchema]
+  nextSuggestedActions: [WorkflowSuggestionSchema],
+  // New workflow fields
+  orderReferenceNumber: { type: String, trim: true },
+  companyId: { type: mongoose.Schema.Types.ObjectId, ref: 'Company' },
+  customerId: { type: mongoose.Schema.Types.ObjectId, ref: 'Customer' },
+  supplierId: { type: mongoose.Schema.Types.ObjectId, ref: 'Supplier' },
+  shipmentMethod: { 
+    type: String, 
+    enum: ['sea', 'air', 'road'] 
+  },
+  shippingTerms: { type: String, trim: true },
+  portName: { type: String, trim: true },
+  buyerOrderReference: { type: String, trim: true },
+  exchangeRate: { type: Number, min: 0 }
 }, {
   timestamps: true
 });
@@ -126,5 +151,9 @@ BusinessTransactionSchema.index({ userId: 1, createdDate: -1 });
 BusinessTransactionSchema.index({ transactionId: 1 });
 BusinessTransactionSchema.index({ status: 1 });
 BusinessTransactionSchema.index({ userId: 1, status: 1 });
+BusinessTransactionSchema.index({ orderReferenceNumber: 1 });
+BusinessTransactionSchema.index({ companyId: 1, createdDate: -1 });
+BusinessTransactionSchema.index({ supplierId: 1 });
+BusinessTransactionSchema.index({ customerId: 1 });
 
 export const BusinessTransactionModel = mongoose.model<BusinessTransactionDoc>('BusinessTransaction', BusinessTransactionSchema);

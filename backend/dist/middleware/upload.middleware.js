@@ -5,26 +5,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.handleUploadErrors = exports.uploadMiddleware = void 0;
 const multer_1 = __importDefault(require("multer"));
-const path_1 = __importDefault(require("path"));
-const fs_1 = __importDefault(require("fs"));
-const uuid_1 = require("uuid");
 const ocr_service_1 = require("../services/ocr.service");
 const ocrService = new ocr_service_1.OCRService();
-// Ensure upload directory exists
-const uploadDir = process.env.UPLOAD_DIR || 'uploads';
-if (!fs_1.default.existsSync(uploadDir)) {
-    fs_1.default.mkdirSync(uploadDir, { recursive: true });
-}
-// Configure multer storage
-const storage = multer_1.default.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, uploadDir);
-    },
-    filename: (req, file, cb) => {
-        const uniqueName = `${(0, uuid_1.v4)()}-${Date.now()}${path_1.default.extname(file.originalname)}`;
-        cb(null, uniqueName);
-    }
-});
+// Configure multer storage for memory storage (no local files)
+const storage = multer_1.default.memoryStorage();
 // File filter to validate file types
 const fileFilter = (req, file, cb) => {
     const supportedTypes = ocrService.getSupportedMimeTypes();

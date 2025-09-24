@@ -1,0 +1,48 @@
+EMIRATES SKYCARGO
+MASTER AIR WAYBILL
+
+AWB No: 176-12345678
+Date: 26/12/2024
+
+Shipper:
+Euro Tech Solutions GmbH
+Industriestrasse 45
+Hamburg, Germany
+
+Consignee:
+Kinship Trading Company  
+Dubai, UAE
+
+Airport of Departure: HAM (Hamburg)
+Airport of Destination: DXB (Dubai)
+
+Flight No: EK058
+Flight Date: 26/12/2024
+
+Pieces: 35 BOXES
+Weight: 850 KGS
+Dimensions: 125 x 85 x 95 CM per box
+
+Nature and Quantity of Goods:
+Electronic Components and Industrial Controllers
+As per Commercial Invoice No: INV-KS-2024-012
+
+Declared Value for Carriage: EUR 16,512.50
+Declared Value for Customs: EUR 16,512.50
+
+Special Handling: FRAGILE - ELECTRONIC EQUIPMENT
+
+Charges:
+Freight Charges: EUR 1,250.00
+Fuel Surcharge: EUR 180.00
+Security Charge: EUR 45.00
+Total Charges: EUR 1,475.00
+
+PREPAID
+
+For EMIRATES SKYCARGO
+_____________________
+Authorized Agent Signature
+
+This Air Waybill is issued subject to the conditions of contract
+on the reverse hereof.

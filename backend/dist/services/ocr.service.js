@@ -9,6 +9,24 @@ const pdf_parse_1 = __importDefault(require("pdf-parse"));
 const mammoth_1 = __importDefault(require("mammoth"));
 const promises_1 = __importDefault(require("fs/promises"));
 class OCRService {
+    async extractTextFromBuffer(buffer, mimeType) {
+        // Create a temporary file path for libraries that need file paths
+        const tempFilePath = `/tmp/temp_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+        try {
+            // Write buffer to temporary file
+            await promises_1.default.writeFile(tempFilePath, buffer);
+            // Extract text using the existing method
+            const text = await this.extractTextFromFile(tempFilePath, mimeType);
+            // Clean up temporary file
+            await promises_1.default.unlink(tempFilePath).catch(() => { }); // Ignore cleanup errors
+            return text;
+        }
+        catch (error) {
+            // Ensure cleanup even if extraction fails
+            await promises_1.default.unlink(tempFilePath).catch(() => { });
+            throw error;
+        }
+    }
     async extractTextFromFile(filePath, mimeType) {
         try {
             switch (mimeType) {

@@ -115,10 +115,24 @@ const BusinessTransactionSchema = new mongoose_1.Schema({
     documents: [TransactionDocumentSchema],
     paymentTerms: PaymentTermsSchema,
     totalAmount: { type: Number },
+    totalAmountAED: { type: Number },
     currency: { type: String, default: 'USD' },
     createdDate: { type: Date, default: Date.now },
     updatedDate: { type: Date, default: Date.now },
-    nextSuggestedActions: [WorkflowSuggestionSchema]
+    nextSuggestedActions: [WorkflowSuggestionSchema],
+    // New workflow fields
+    orderReferenceNumber: { type: String, trim: true },
+    companyId: { type: mongoose_1.default.Schema.Types.ObjectId, ref: 'Company' },
+    customerId: { type: mongoose_1.default.Schema.Types.ObjectId, ref: 'Customer' },
+    supplierId: { type: mongoose_1.default.Schema.Types.ObjectId, ref: 'Supplier' },
+    shipmentMethod: {
+        type: String,
+        enum: ['sea', 'air', 'road']
+    },
+    shippingTerms: { type: String, trim: true },
+    portName: { type: String, trim: true },
+    buyerOrderReference: { type: String, trim: true },
+    exchangeRate: { type: Number, min: 0 }
 }, {
     timestamps: true
 });
@@ -132,5 +146,9 @@ BusinessTransactionSchema.index({ userId: 1, createdDate: -1 });
 BusinessTransactionSchema.index({ transactionId: 1 });
 BusinessTransactionSchema.index({ status: 1 });
 BusinessTransactionSchema.index({ userId: 1, status: 1 });
+BusinessTransactionSchema.index({ orderReferenceNumber: 1 });
+BusinessTransactionSchema.index({ companyId: 1, createdDate: -1 });
+BusinessTransactionSchema.index({ supplierId: 1 });
+BusinessTransactionSchema.index({ customerId: 1 });
 exports.BusinessTransactionModel = mongoose_1.default.model('BusinessTransaction', BusinessTransactionSchema);
 //# sourceMappingURL=BusinessTransaction.js.map

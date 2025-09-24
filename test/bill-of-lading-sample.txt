@@ -1,0 +1,45 @@
+MAERSK LINE
+Bill of Lading
+
+B/L No: MAEU123456789
+Date: 25/12/2024
+
+Shipper:
+ABC Suppliers LLC
+Building 123, Industrial Area
+Dubai, UAE
+
+Consignee:
+Rock Stone Trading LLC
+Office 456, Business Center
+Dubai, UAE
+
+Notify Party:
+Same as consignee
+
+Port of Loading: Jebel Ali Port, Dubai
+Port of Discharge: Port of Hamburg, Germany
+Vessel: MAERSK COPENHAGEN
+Voyage No: 245W
+
+Container No: MSKU1234567
+Seal No: 789456123
+Container Type: 20' GP
+
+Description of Goods:
+Industrial Steel Pipes and Fittings
+As per Commercial Invoice INV-ORD-2024-001
+
+Gross Weight: 15,500 KGS
+Measurement: 28.5 CBM
+Number of Packages: 500 PIECES
+
+Freight: PREPAID
+Place and Date of Issue: Dubai, 25/12/2024
+
+This Bill of Lading is issued subject to the terms and conditions
+printed on the reverse hereof which shall have the force of law.
+
+For MAERSK LINE
+_________________
+Captain's Signature

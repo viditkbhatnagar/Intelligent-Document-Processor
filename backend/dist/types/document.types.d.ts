@@ -118,6 +118,15 @@ export interface BusinessTransaction {
     createdDate: Date;
     updatedDate: Date;
     nextSuggestedActions?: WorkflowSuggestion[];
+    orderReferenceNumber?: string;
+    companyId?: string;
+    customerId?: string;
+    supplierId?: string;
+    shipmentMethod?: 'sea' | 'air' | 'road';
+    shippingTerms?: string;
+    portName?: string;
+    buyerOrderReference?: string;
+    exchangeRate?: number;
 }
 export interface TransactionDocument {
     documentId: string;

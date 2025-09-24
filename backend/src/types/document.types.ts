@@ -128,6 +128,16 @@ export interface BusinessTransaction {
   createdDate: Date;
   updatedDate: Date;
   nextSuggestedActions?: WorkflowSuggestion[];
+  // New workflow fields
+  orderReferenceNumber?: string;
+  companyId?: string; // Rock Stone or Kinship
+  customerId?: string;
+  supplierId?: string;
+  shipmentMethod?: 'sea' | 'air' | 'road';
+  shippingTerms?: string;
+  portName?: string;
+  buyerOrderReference?: string;
+  exchangeRate?: number;
 }
 
 export interface TransactionDocument {

@@ -8,6 +8,7 @@ export declare class DocumentController {
     private ocrService;
     private aiService;
     private workflowEngine;
+    private gridfsService;
     uploadDocument(req: AuthenticatedRequest, res: Response): Promise<void>;
     getDocuments(req: AuthenticatedRequest, res: Response): Promise<void>;
     getDocument(req: AuthenticatedRequest, res: Response): Promise<void>;

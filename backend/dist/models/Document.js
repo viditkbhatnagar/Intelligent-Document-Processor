@@ -72,6 +72,8 @@ const ProcessedDocumentSchema = new mongoose_1.Schema({
     rawText: { type: String },
     userId: { type: String, required: true },
     error: { type: String },
+    // GridFS file storage
+    fileId: { type: mongoose_1.default.Schema.Types.ObjectId, required: true },
     // Workflow related fields
     transactionId: { type: String },
     relatedDocuments: [{ type: String }],
